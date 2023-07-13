@@ -20,7 +20,7 @@
         updateList();
 
         function getShoppingItemsFromLocalStorage() {
-            let items = localStorage.getItem('shoppingItems');
+            let items = Storage.getItem('shoppingItems');
 
             if (items == null || items == '') {
                 items = [];
@@ -36,13 +36,13 @@
 
             if (item != null) {
                 shoppingItems.push(item);
-                localStorage.setItem('shoppingItems', shoppingItems);
+                Storage.setItem('shoppingItems', shoppingItems);
             }
         }
 
         function removeItem(itemIndex) {
             shoppingItems.splice(itemIndex, 1);
-            localStorage.setItem('shoppingItems', shoppingItems);
+            Storage.setItem('shoppingItems', shoppingItems);
         }
 
         function updateList() {
