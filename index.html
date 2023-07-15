@@ -1,9 +1,9 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <title>Einkaufsliste</title>
 </head>
-
 <body>
     <h1>Einkaufsliste</h1>
 
@@ -14,21 +14,18 @@
     </ul>
 
     <script>
-
-        let shoppingItems = getShoppingItemsFromwindowlocalStorage();
+        let shoppingItems = [];
 
         updateList();
 
-        function getShoppingItemsFromwindowlocalStorage() {
+        function getShoppingItemsFromLocalStorage() {
             let items = window.localStorage.getItem('shoppingItems');
 
             if (items == null || items == '') {
-                items = [];
+                return [];
             } else {
-                items = items.split(',');
+                return JSON.parse(items);
             }
-
-            return items;
         }
 
         function addNewItem() {
@@ -36,13 +33,13 @@
 
             if (item != null) {
                 shoppingItems.push(item);
-                window.localStorage.setItem('shoppingItems', shoppingItems);
+                window.localStorage.setItem('shoppingItems', JSON.stringify(shoppingItems));
             }
         }
 
         function removeItem(itemIndex) {
             shoppingItems.splice(itemIndex, 1);
-            window.localStorage.setItem('shoppingItems', shoppingItems);
+            window.localStorage.setItem('shoppingItems', JSON.stringify(shoppingItems));
         }
 
         function updateList() {
@@ -55,6 +52,4 @@
         }
     </script>
 </body>
-
 </html>
-
