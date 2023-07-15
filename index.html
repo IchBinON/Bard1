@@ -15,12 +15,12 @@
 
     <script>
 
-        let shoppingItems = getShoppingItemsFromLocalGlobalStorage();
+        let shoppingItems = getShoppingItemsFromwindowlocalStorage();
 
         updateList();
 
-        function getShoppingItemsFromLocalGlobalStorage() {
-            let items = GlobalStorage.getItem('shoppingItems');
+        function getShoppingItemsFromwindowlocalStorage() {
+            let items = window.localStorage.getItem('shoppingItems');
 
             if (items == null || items == '') {
                 items = [];
@@ -36,13 +36,13 @@
 
             if (item != null) {
                 shoppingItems.push(item);
-                GlobalStorage.setItem('shoppingItems', shoppingItems);
+                window.localStorage.setItem('shoppingItems', shoppingItems);
             }
         }
 
         function removeItem(itemIndex) {
             shoppingItems.splice(itemIndex, 1);
-            GlobalStorage.setItem('shoppingItems', shoppingItems);
+            window.localStorage.setItem('shoppingItems', shoppingItems);
         }
 
         function updateList() {
